@@ -1,0 +1,9 @@
+name: GuardianStones
+main: com.imaginarycode.plugins.guardianstones.GuardianStones
+version: 0.1
+author: tuxed
+softdepend: ["WorldGuard"]
+commands:
+    guardianstones:
+        description: Adjust the MiningCash reward economy
+        aliases: ["gs"]
