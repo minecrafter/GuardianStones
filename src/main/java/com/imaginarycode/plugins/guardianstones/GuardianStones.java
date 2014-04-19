@@ -99,7 +99,7 @@ public class GuardianStones extends JavaPlugin implements Listener {
             try {
                 String region = prot.defineRegion(e.getPlayer().getName(), e.getBlockPlaced().getLocation(), getConfig().getInt("protection-blocks." + e.getBlockPlaced().getTypeId() + ".radius"));
                 userToRegionMappings.set(GuardianStonesUtil.serializedLoc(e.getBlockPlaced().getLocation()) + ".name", region);
-                userToRegionMappings.set(GuardianStonesUtil.serializedLoc(e.getBlockPlaced().getLocation()) + ".owner", e.getPlayer().getName());
+                userToRegionMappings.set(GuardianStonesUtil.serializedLoc(e.getBlockPlaced().getLocation()) + ".owner", e.getPlayer().getUniqueId().toString());
                 e.getPlayer().sendMessage(ChatColor.GREEN + "Protection created successfully.");
             } catch (GuardianStonesException e1) {
                 e.getPlayer().sendMessage(ChatColor.RED + "An error occured while we tried to create the protection: " + e1.getMessage());
@@ -114,7 +114,7 @@ public class GuardianStones extends JavaPlugin implements Listener {
         if (getConfig().contains("protection-blocks." + e.getBlock().getTypeId())) {
             // Identify the owner
             try {
-                if (userToRegionMappings.getString(GuardianStonesUtil.serializedLoc(e.getBlock().getLocation()) + ".owner").equals(e.getPlayer().getName())) {
+                if (userToRegionMappings.getString(GuardianStonesUtil.serializedLoc(e.getBlock().getLocation()) + ".owner").equals(e.getPlayer().getUniqueId().toString())) {
                     try {
                         prot.removeRegion(userToRegionMappings.getString(GuardianStonesUtil.serializedLoc(e.getBlock().getLocation()) + ".name"));
                         userToRegionMappings.set(GuardianStonesUtil.serializedLoc(e.getBlock().getLocation()), null);

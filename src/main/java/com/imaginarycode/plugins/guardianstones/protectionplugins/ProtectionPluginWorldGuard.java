@@ -188,7 +188,7 @@ public class ProtectionPluginWorldGuard implements ProtectionPlugin {
             }
         } catch (UnsupportedIntersectionException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new GuardianStonesException("Internal WorldGuard error");
         }
         // Set some flags
         // These will be quite aggressive for a PvP server
